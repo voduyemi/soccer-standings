@@ -1,0 +1,33 @@
+{
+  "name": "serie-a-standings",
+  "version": "1.0.0",
+  "description": "A simple app that shows Footbal Fixtures for the Premier League",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "football-data",
+    "restful",
+    "api",
+    "nodejs"
+  ],
+  "author": "Victor Oduyemi",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "hapi": "^16.0.2",
+    "lodash.filter": "^4.6.0",
+    "lodash.take": "^4.1.1",
+    "request": "^2.79.0",
+    "vision": "^4.1.1"
+  }
+}
