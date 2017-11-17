@@ -11,7 +11,7 @@ const server = new Hapi.Server();
 
 server.connection({
 	host: '127.0.0.1',
-	port: 3000
+	port: process.env.PORT || 3000
 });
 
 // Register vision for our views
