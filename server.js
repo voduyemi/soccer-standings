@@ -10,7 +10,7 @@ const LodashTake = require('lodash.take');
 const server = new Hapi.Server();
 
 server.connection({
-	host: '127.0.0.1',
+	host: process.env.YOUR_HOST || '127.0.0.1',
 	port: process.env.PORT || 3000
 });
 
