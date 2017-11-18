@@ -10,9 +10,18 @@
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
 </head>
 <body>
-
+	<div class="tabs is-left">
+		<ul>
+			<li id="league-tab" class="is-active">
+				<a onClick="switchToStandings()">League Standings</a>
+			</li>
+			<li id="news-tab">
+				<a onClick="switchToNews()">League News</a>
+			</li>
+		</ul>
+	</div>
 	<div class="container">
-		<div class="section columns">
+		<div id = "league-tab-content" class="section columns">
 			<div class="column is-8 is-offset-2">
 				<article class="media">
 					<div class="media-left">
@@ -76,7 +85,63 @@
 				</table>
 			</div>
 		</div>
+		<div class="hidden" id = "news-tab-content" >
+							<div class="box">
+								 {{#each articles.articles}}
+								<article class="media">
+									<div class="media-content">
+										<div class="content">
+											<h3>{{ title }}</h3>
+											<p>{{ description }}</p>
+											<a href="{{ url }}" target="_blank">Read More...</a>
+										</div>
+									</div>
+									<div class="media-right">
+										<figure>
+											<img src="{{ urlToImage }}" style="width: 100%; height: 100%"  alt="Article Image">
+										</figure>
+									</div>
+								</article>
+								{{/each}}
+							</div>
+		</div>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	  $(document).ready(function () {
+			$("#news-tab-content").hide();
+		});  
 
+
+	  function switchToStandings() {
+			removeActive();
+			hideAll();
+			$("#league-tab").addClass("is-active");
+			$("#league-tab-content").removeClass("hidden");
+			$("#news-tab-content").hide();
+			$("#league-tab-content").show();
+			
+		}
+
+		function switchToNews() {
+			removeActive();
+			hideAll();
+			$("#news-tab").addClass("is-active");
+			$("#news-tab-content").removeClass("hidden");
+			$("#league-tab-content").hide();
+			$("#news-tab-content").show();
+		}
+
+	function removeActive() {
+			$("li").each(function () {
+				$(this).removeClass("is-active");
+			});
+		}
+
+	function hideAll() {
+			$("#league-tab-content").addClass("hidden");
+			$("#news-tab-content").addClass("hidden");
+		}
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 const Hapi = require('hapi');
 const request = require('request');
+const news_req = require('request');
 const Vision = require('vision');
 const Handlebars = require('handlebars');
 const LodashFilter = require('lodash.filter');
@@ -41,7 +42,16 @@ server.route({
 			}
 
 			const data = JSON.parse(body);
-			reply.view('index', { result: data });
+
+			news_req.get('https://newsapi.org/v2/top-headlines?sources=four-four-two&apiKey=e9bc5216f5ac463fa3759e0cab6fabae', function(error, response, body){
+				if(error){
+					console.log(`I encountered an Error retrieving the league news!!! : `+ error)
+					throw error;
+				}
+				const articles = JSON.parse(body);
+				reply.view('index', { result: data, articles: articles });
+			});
+			
 		});
 	}
 });
